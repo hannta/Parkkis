@@ -1,0 +1,187 @@
+﻿<Page
+    x:Class="Parkkis.Views.MapPageView"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Parkkis.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:micro="using:Caliburn.Micro"
+    xmlns:helpers="using:Parkkis.Helpers"
+    xmlns:converters="using:Parkkis.Converters"
+    xmlns:behaviors="using:Parkkis.Behaviors"
+    mc:Ignorable="d"
+    xmlns:viewModels="using:Parkkis.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewModels:MapPageViewModel, IsDesignTimeCreatable=True}"
+    micro:Bind.AtDesignTime="True"    
+    Background="{StaticResource PageBgBrush}"
+    RequestedTheme="Light">
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                    <SlideNavigationTransitionInfo/>
+                </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+
+    <Page.Resources>
+        <converters:VisibilityConverter x:Key="VisibilityConverter" />
+        <converters:ParkingFacilityStatusToBrushConverter x:Key="ParkingFacilityStatusToBrushConverter" />
+        <converters:ParkingFacilityStatusToStringConverter x:Key="ParkingFacilityStatusToStringConverter" />
+        <converters:MetersToDistanceConverter x:Key="MetersToDistanceConverter" />
+    </Page.Resources>
+
+    <i:Interaction.Behaviors>
+        <behaviors:StatusBarBehavior IsVisible="True" BackgroundColor="{StaticResource MainDarkColor}" ForegroundColor="{StaticResource StatusBarColor}"/>
+    </i:Interaction.Behaviors>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Height="70" Background="{StaticResource MainBrush}">
+            <StackPanel Orientation="Horizontal">
+
+                <Path Width="38" Height="38" Stretch="Fill" Fill="White"
+                      Data="m -634.85714 875.05846 c -25.53118 -1.7022 -52.66858 -6.0201 -81.5 -12.9678 -135.15324 -32.5689 -250.03244 -125.7358 -311.53336 -252.6531 -33.9457 -70.0529 -50.7789 -156.47692 -45.4388 -233.28963 8.0737 -116.13198 55.8984 -221.92661 136.97198 -303.000183 61.17709 -61.17709 137.14753 -103.9769 220.00018 -123.94251 77.67433 -18.71775 147.32567 -18.71775 225 0 126.67535 30.52588 235.22871 113.81685 299.85921 230.076403 32.2373 57.98939 52.255 126.98998 57.113 196.86629 5.9649 85.79962 -15.1453 180.37353 -57.113 255.86633 -47.1038 84.7319 -116.8119 151.6423 -202.85921 194.7175 -72.90131 36.4943 -158.86966 53.769 -240.5 48.3267 z m 79.3897 -31.3824 c 51.50544 -5.7173 97.8656 -19.2574 145.6103 -42.5273 116.04081 -56.5562 202.19351 -163.1878 233.90161 -289.5008 8.791 -35.01997 12.0133 -63.45254 12.0133 -106.00003 0 -42.54749 -3.2223 -70.98006 -12.0133 -106 -34.9277 -139.13896 -134.5154 -252.218283 -268.40161 -304.7633829 -36.05573 -14.1504601 -71.56121 -22.8299701 -112.15915 -27.4179101 -21.50331 -2.43007 -73.17839 -2.43007 -94.6817 0 -31.94691 3.6103 -58.74943 9.28248 -86.53092 18.31244 -105.69241 34.35374 -193.46179 105.23095 -248.13298 200.377113 -14.92651 25.97708 -26.24141 51.23686 -36.05561 80.49174 -10.5097 31.32787 -16.2666 57.55298 -20.1209 91.65915 -2.4301 21.50331 -2.4301 73.17839 0 94.6817 3.8536 34.09998 9.6091 60.32138 20.1189 91.65918 44.59644 132.9761 147.06718 235.1372 280.38207 279.5347 35.93809 11.9684 68.54912 18.2815 110.18029 21.3297 12.28041 0.8992 62.10846 -0.3065 75.8897 -1.8363 z m -224.8897 -208.5316 c -3.025 -1.0151 -10.675 -3.4144 -17 -5.3318 -14.43452 -4.3756 -31.07836 -9.4677 -46.25274 -14.1506 l -11.75275 -3.627 0.25275 -178.14326 0.25274 -178.14327 11.5 -3.3075 c 10.22711 -2.94141 94.15232 -27.24305 127 -36.77452 74.3335 -21.56947 132.68769 -35.52356 163 -38.97777 15.62226 -1.78023 41.77497 -2.00819 55.78941 -0.48629 42.00656 4.56168 81.74056 20.75351 105.59431 43.03027 26.00899 24.28953 38.78264 57.96799 37.32719 98.41521 -1.52833 42.47224 -16.42434 75.86007 -46.87795 105.07191 -38.86371 37.27903 -89.5977 60.01592 -155.33296 69.61402 -6.4215 0.9376 -22.03576 1.3073 -54.5 1.2903 -49.08181 -0.026 -56.56243 -0.4 -129 -6.4543 -6.325 -0.5286 -15.1 -1.2193 -19.5 -1.5349 -4.4 -0.3156 -9.2375 -0.815 -10.75 -1.1099 l -2.75 -0.536 0 76.5794 c 0 42.1187 -0.3375 76.5439 -0.75 76.5005 -0.4125 -0.043 -3.225 -0.9095 -6.25 -1.9245 z m 67.5 -220.51769 c 40.14816 -0.8662 73.37154 -4.21545 90.34141 -9.1073 30.92141 -8.91362 55.68599 -30.54646 62.67759 -54.75135 2.5106 -8.69168 2.2814 -23.34272 -0.49465 -31.62019 -6.71159 -20.01216 -24.66969 -33.3507 -52.02435 -38.64152 -18.96626 -3.66838 -48.9141 -0.84425 -107.5 10.1374 -10.45 1.9588 -26.2 4.89785 -35 6.53122 -8.8 1.63336 -16.5625 3.18133 -17.25 3.43994 -0.98007 0.36866 -1.25 12.89783 -1.25 58.02119 l 0 57.55101 17.75 -0.51051 c 9.7625 -0.28078 29 -0.75323 42.75 -1.04989 z" Margin="24,0,0,0"/>
+
+                <TextBlock x:Uid="ApplicationTitle" Text="Parkkis" Foreground="{StaticResource WhiteTextBrush}" Style="{ThemeResource GroupHeaderTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="18,0,0,0"/>
+
+                <StackPanel Orientation="Horizontal" Background="Transparent" micro:Message.Attach="[Event Tapped] = [Action OpenSettingsPage]">
+                    <TextBlock Text="{Binding SelectedRegion.DisplayName}" Foreground="{StaticResource WhiteTextBrush}" Style="{ThemeResource BaseTextBlockStyle}" FontSize="15" HorizontalAlignment="Left" Margin="16,4,0,0" VerticalAlignment="Center"/>
+                    <Polygon Points="0,0 5,8, 10,0" Fill="{StaticResource WhiteTextBrush}" Stroke="Transparent" Opacity="0.4" VerticalAlignment="Center" Margin="6,10,0,0" />
+                </StackPanel>
+
+            </StackPanel>
+            <ProgressBar Background="Transparent" Foreground="{StaticResource WhiteTextBrush}" IsIndeterminate="{Binding IsLoading}" BorderThickness="0" VerticalAlignment="Bottom" Style="{StaticResource ProgressBarStyle}"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <maps:MapControl micro:Message.Attach="[Event MapTapped] = [Action UnselectParkingFacility]" ZoomLevel="{Binding MapZoomLevel, Mode=TwoWay}" Center="{Binding MapCenter, Mode=TwoWay}" MapServiceToken="bzTukUhmYgCQD8BzJWwD-g">
+
+                <!-- Parking facilities -->
+                <maps:MapItemsControl ItemsSource="{Binding ParkingFacilities}">
+                    <maps:MapItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Visibility="{Binding Location, Converter={StaticResource VisibilityConverter}}" micro:Message.Attach="[Event Tapped] = [Action SelectParkingFacility($dataContext, $eventArgs)]" Background="Transparent">
+                                <TextBlock Canvas.ZIndex="9999" Text="P" FontSize="18" Foreground="White" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,12"/>
+                                <StackPanel>
+                                    <Grid>
+                                        <Path Width="28.5" Height="38" Stretch="Fill" Fill="{Binding Status, Converter={StaticResource ParkingFacilityStatusToBrushConverter}, ConverterParameter=0.95}" maps:MapControl.Location="{Binding Location}" maps:MapControl.NormalizedAnchorPoint="{Binding NormalizedAnchorPoint}"
+                                      Data="M 352.03197 709.66981 C 279.94847 609.88753 228.68483 522.72523 205.40419 460.36218 c -10.89814 -29.19342 -14.73911 -48.88034 -13.86172 -71.04835 1.32003 -33.35162 7.4459 -58.67105 20.67447 -85.45165 27.7701 -56.21922 82.64458 -87.5 153.49736 -87.5 71.00387 0 125.73082 31.19973 153.48233 87.5 14.2011 28.81016 20.27136 55.54729 20.43314 90 0.0893 19.021 -0.64979 24.37242 -6.07708 44 -13.29727 48.08902 -53.03564 123.18187 -111.12985 210 -14.18241 21.19471 -47.36029 68.41757 -55.01745 78.30763 l -1.78664 2.30764 -13.58678 -18.80764 z"
+                                      Stroke="{StaticResource PushpinStrokeBrush}" StrokeThickness="1"/>
+
+                                      <!-- Selected pushpin, top of default one -->
+                                        <Path Width="28.5" Height="38" Stretch="Fill" Fill="{StaticResource MainDarkBrush}" maps:MapControl.Location="{Binding Location}" maps:MapControl.NormalizedAnchorPoint="{Binding NormalizedAnchorPoint}" Visibility="{Binding IsSelected, Converter={StaticResource VisibilityConverter}}"
+                                      Data="M 352.03197 709.66981 C 279.94847 609.88753 228.68483 522.72523 205.40419 460.36218 c -10.89814 -29.19342 -14.73911 -48.88034 -13.86172 -71.04835 1.32003 -33.35162 7.4459 -58.67105 20.67447 -85.45165 27.7701 -56.21922 82.64458 -87.5 153.49736 -87.5 71.00387 0 125.73082 31.19973 153.48233 87.5 14.2011 28.81016 20.27136 55.54729 20.43314 90 0.0893 19.021 -0.64979 24.37242 -6.07708 44 -13.29727 48.08902 -53.03564 123.18187 -111.12985 210 -14.18241 21.19471 -47.36029 68.41757 -55.01745 78.30763 l -1.78664 2.30764 -13.58678 -18.80764 z"
+                                      Stroke="{StaticResource PushpinStrokeBrush}" StrokeThickness="1"/>
+                                    </Grid>
+                                    <Ellipse Canvas.ZIndex="-9999" HorizontalAlignment="Center" VerticalAlignment="Center" Width="15" Height="6" Margin="0,-3,0,0" Fill="{StaticResource PushpinShadowBrush}"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </maps:MapItemsControl.ItemTemplate>
+                </maps:MapItemsControl>
+
+                <!-- User location marker-->
+                <Grid Height="24" Width="24" Margin="0" maps:MapControl.Location="{Binding CurrentLocation}" Visibility="{Binding CurrentLocation, Mode=TwoWay, Converter={StaticResource VisibilityConverter}}">
+                    <Ellipse Fill="{StaticResource UserMarkerBlackBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24" Height="24" />
+                    <Ellipse Fill="{StaticResource UserMarkerGreenBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20" Stroke="{StaticResource UserMarkerWhiteBrush}" StrokeThickness="2"/>
+                </Grid>
+
+            </maps:MapControl>
+
+            <Grid Height="60" Background="{StaticResource MainDarkBrush}" Visibility="{Binding NoParkingFacilities, Converter={StaticResource VisibilityConverter}}">
+                <TextBlock x:Uid="NoParkinFacilitiesFound" Text="!Unable to find parking facilities" TextWrapping="NoWrap" Margin="0" Style="{StaticResource BaseTextBlockStyle}" FontSize="20" Foreground="{StaticResource WhiteTextBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            </Grid>
+
+
+            <!-- Selected facility -->
+            <Grid x:Name="SelectedParkingFacilityGrid" MinHeight="60" Background="{StaticResource SelectedFacilityOverlayBrush}" Visibility="Collapsed" Opacity="0.9" VerticalAlignment="Bottom" Margin="12,0,12,12">
+                
+                <Grid.Resources>
+                    <!-- Show selected parking facility storyboard -->
+                    <Storyboard x:Name="ShowSelectedParkingFacilityStoryboard" helpers:StoryboardHelper.BeginIfTrue="{Binding ShowSelectedParkingFacility}">
+                        <DoubleAnimation Storyboard.TargetName="SelectedParkingFacilityGrid" Storyboard.TargetProperty="Opacity" From="0" To="0.9" Duration="0:0:0.2"/>
+                           <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="SelectedParkingFacilityGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </Grid.Resources>
+  
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="80"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" micro:Message.Attach="[Event Tapped] = [Action UnselectParkingFacility]" Background="Transparent" Margin="12">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding SelectedParkingFacility.Name}" TextWrapping="NoWrap" Margin="0" Style="{StaticResource BaseTextBlockStyle}" FontSize="20" Foreground="{StaticResource WhiteTextBrush}"/>
+
+                        <StackPanel  Grid.Column="1" Orientation="Horizontal" Visibility="{Binding SelectedParkingFacility.Distance, Converter={StaticResource VisibilityConverter}}">
+                            <Ellipse HorizontalAlignment="Center" VerticalAlignment="Center" Width="7" Height="7" Margin="0,0,-15,0" Fill="#FFC7C7C7"/>
+                            <Ellipse Fill="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" Width="15" Height="15" Margin="0,0,6,0" StrokeThickness="1" Stroke="#FFC7C7C7"/>
+                            <TextBlock Text="{Binding SelectedParkingFacility.Distance, Converter={StaticResource MetersToDistanceConverter}}" TextWrapping="NoWrap" Margin="0" FontSize="15" Style="{StaticResource ListViewItemContentTextBlockStyle}" Foreground="{StaticResource WhiteTextBrush}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <TextBlock Text="{Binding SelectedParkingFacility.Address}" TextWrapping="WrapWholeWords" Style="{StaticResource BaseTextBlockStyle}" FontSize="14" Foreground="{StaticResource WhiteTextBrush}"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Status text -->
+                        <TextBlock Grid.Column="0" Text="{Binding SelectedParkingFacility.Status, Converter={StaticResource ParkingFacilityStatusToStringConverter}}" TextWrapping="NoWrap" Margin="0" Style="{StaticResource BaseTextBlockStyle}" FontSize="14" Foreground="{StaticResource WhiteTextBrush}"/>
+
+                        <!-- Exact space numbers -->
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Visibility="{Binding SelectedParkingFacility.TotalSpace, Converter={StaticResource VisibilityConverter}}">
+                            <TextBlock Text="{Binding SelectedParkingFacility.FreeSpace}" TextWrapping="NoWrap" Margin="0" Style="{StaticResource BaseTextBlockStyle}" FontSize="14" Foreground="{StaticResource WhiteTextBrush}"/>
+                            <TextBlock Text="/" TextWrapping="NoWrap" Margin="2,0" Style="{StaticResource BaseTextBlockStyle}" FontSize="14" Foreground="{StaticResource WhiteTextBrush}"/>
+                            <TextBlock Text="{Binding SelectedParkingFacility.TotalSpace}" TextWrapping="NoWrap" Margin="0" Style="{StaticResource BaseTextBlockStyle}" FontSize="14" Foreground="{StaticResource WhiteTextBrush}"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+
+                <!-- Navigate button -->
+                <Grid Background="{StaticResource SelectedFacilityOverlayBrush}" Grid.Column="1" micro:Message.Attach="[Event Tapped] = [Action NavigateToSelectedParkingFacility]">
+                    <Image Source="ms-appx:///Assets/navigate_arrow_white.png" Height="50" Width="50" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                </Grid>
+
+            </Grid>
+        </Grid>
+
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar Background="{StaticResource AccentBrush}" Foreground="{StaticResource MainDarkBrush}">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Refresh" x:Name="RefreshParkingFacilities" x:Uid="AppBarButtonRefresh"/>
+                <AppBarButton Icon="List" x:Name="OpenListPage" x:Uid="AppBarButtonList"/>
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Name="OpenSettingsPage" x:Uid="AppBarMenuSettings" />
+                <AppBarButton x:Name="OpenAboutPage" x:Uid="AppBarMenuAbout" />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+</Page>

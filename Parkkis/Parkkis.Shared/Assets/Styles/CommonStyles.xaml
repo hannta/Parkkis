@@ -1,0 +1,85 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Parkkis.Assets.Styles">
+
+    <Color x:Key="PageBgColor">#FFFFFFFF</Color>
+    <SolidColorBrush x:Key="PageBgBrush" Color="{StaticResource PageBgColor}"/>
+
+    <Color x:Key="MainColor">#FF2196F3</Color>
+    <SolidColorBrush x:Key="MainBrush" Color="{StaticResource MainColor}"/>
+
+    <Color x:Key="MainDarkColor">#FF1976D2</Color>
+    <SolidColorBrush x:Key="MainDarkBrush" Color="{StaticResource MainDarkColor}"/>
+
+    <Color x:Key="AccentColor">#FFECF0F1</Color>
+    <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
+
+    <Color x:Key="StatusBarColor">#FF74afea</Color>
+    <SolidColorBrush x:Key="StatusBarBrush" Color="{StaticResource StatusBarColor}"/>
+
+    
+    <!-- Text -->
+    <Color x:Key="MainTextColor">#FF212121</Color>
+    <SolidColorBrush x:Key="MainTextBrush" Color="{StaticResource MainTextColor}"/>
+
+    <Color x:Key="GreyTextColor">#FF898c89</Color>
+    <SolidColorBrush x:Key="GreyTextBrush" Color="{StaticResource GreyTextColor}"/>
+
+    <Color x:Key="OpaqueTextColor">#CCFFFFFF</Color>
+    <SolidColorBrush x:Key="OpaqueTextBrush" Color="{StaticResource OpaqueTextColor}" Opacity="0.5"/>
+
+    <Color x:Key="WhiteTextColor">#FFFFFFFF</Color>
+    <SolidColorBrush x:Key="WhiteTextBrush" Color="{StaticResource WhiteTextColor}"/>
+
+
+    <!-- Map pins -->
+    <Color x:Key="PushpinShadowColor">#A54D4D4D</Color>
+    <SolidColorBrush x:Key="PushpinShadowBrush" Color="{StaticResource PushpinShadowColor}"/>
+
+    <Color x:Key="PushpinStrokeColor">#8CAAAAAA</Color>
+    <SolidColorBrush x:Key="PushpinStrokeBrush" Color="{StaticResource PushpinStrokeColor}"/>
+
+    <Color x:Key="SelectedFacilityOverlayColor">#E5003889</Color>
+    <SolidColorBrush x:Key="SelectedFacilityOverlayBrush" Color="{StaticResource SelectedFacilityOverlayColor}"/>
+
+
+    <!-- Parking facility status colors -->
+
+    <!-- Spaces Available -->
+    <Color x:Key="FacilityStatusSpacesAvailableColor">#FF00B16A</Color>
+    <SolidColorBrush x:Key="FacilityStatusSpacesAvailableBrush" Color="{StaticResource FacilityStatusSpacesAvailableColor}"/>
+
+    <!-- Almost full -->
+    <Color x:Key="FacilityStatusAlmostFullColor">#FFF7CA18</Color>
+    <SolidColorBrush x:Key="FacilityStatusAlmostFullBrush" Color="{StaticResource FacilityStatusAlmostFullColor}"/>
+
+    <!-- Full -->
+    <Color x:Key="FacilityStatusFullColor">#FFD91E18</Color>
+    <SolidColorBrush x:Key="FacilityStatusFullBrush" Color="{StaticResource FacilityStatusFullColor}"/>
+
+    <!-- Closed -->
+    <Color x:Key="FacilityStatusClosedColor">#FFD91E18</Color>
+    <SolidColorBrush x:Key="FacilityStatusClosedBrush" Color="{StaticResource FacilityStatusClosedColor}"/>
+
+    <!-- Open -->
+    <Color x:Key="FacilityStatusOpenColor">#FF00B16A</Color>
+    <SolidColorBrush x:Key="FacilityStatusOpenBrush" Color="{StaticResource FacilityStatusOpenColor}"/>
+
+    <!-- Unknown -->
+    <Color x:Key="FacilityStatusUnknownColor">#FF95A5A6</Color>
+    <SolidColorBrush x:Key="FacilityStatusUnknownBrush" Color="{StaticResource FacilityStatusUnknownColor}"/>
+    
+    
+    <!-- User location marker -->
+    <Color x:Key="UserMarkerBlackColor">#FF000000</Color>
+    <SolidColorBrush x:Key="UserMarkerBlackBrush" Color="{StaticResource UserMarkerBlackColor}"/>
+
+    <Color x:Key="UserMarkerWhiteColor">#FFf1f1f1</Color>
+    <SolidColorBrush x:Key="UserMarkerWhiteBrush" Color="{StaticResource UserMarkerWhiteColor}"/>
+
+    <Color x:Key="UserMarkerGreenColor">#FF009924</Color>
+    <SolidColorBrush x:Key="UserMarkerGreenBrush" Color="{StaticResource UserMarkerGreenColor}"/>
+    
+
+</ResourceDictionary>

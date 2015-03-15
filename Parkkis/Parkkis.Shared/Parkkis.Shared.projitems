@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>a6c78060-38e4-4308-890e-ead8ee0feca2</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Parkkis</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\MetersToDistanceConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ParkingFacilityStatusToBrushConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ParkingFacilityStatusToStringConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\StoryboardHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Base\BaseParkingFacility.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\IParkingFacility.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Oulu\OuluParkingFacility.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ParkingFacilityStatus.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Region.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Tampere\TampereParkingFacility.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IParkingFacilityService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Oulu\OuluParkingFacilityService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Tampere\TampereParkingFacilityService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Utils\AppSettingsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Utils\DialogService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Utils\InfoUtilService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Utils\LocationUtilService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Utils\RegionService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AboutPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ListPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MapPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SettingsPageViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Assets\Styles\CommonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en-US\Resources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\fi\Resources.resw" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,23 @@
+﻿<micro:CaliburnApplication
+    x:Class="Parkkis.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:micro="using:Caliburn.Micro"
+    RequestedTheme="Dark">
+
+        <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Assets/Styles/CommonStyles.xaml"/>
+                <ResourceDictionary Source="Assets/Styles/PlatformSpecificStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+        <!--
+        <ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary.ThemeDictionaries>
+        -->
+            
+    </Application.Resources>
+
+</micro:CaliburnApplication>

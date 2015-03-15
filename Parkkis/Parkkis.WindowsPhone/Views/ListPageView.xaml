@@ -1,0 +1,113 @@
+﻿<Page
+    x:Class="Parkkis.Views.ListPageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Parkkis.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:micro="using:Caliburn.Micro"
+    xmlns:converters="using:Parkkis.Converters"
+    mc:Ignorable="d"
+    xmlns:viewModels="using:Parkkis.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewModels:ListPageViewModel, IsDesignTimeCreatable=True}"
+    micro:Bind.AtDesignTime="True"
+    Background="{StaticResource PageBgBrush}"
+    RequestedTheme="Dark">
+
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                    <SlideNavigationTransitionInfo/>
+                </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+
+    <Page.Resources>
+        <converters:ParkingFacilityStatusToBrushConverter x:Key="ParkingFacilityStatusToBrushConverter" />
+        <converters:ParkingFacilityStatusToStringConverter x:Key="ParkingFacilityStatusToStringConverter" />
+        <converters:VisibilityConverter x:Key="VisibilityConverter" />
+        <converters:MetersToDistanceConverter x:Key="MetersToDistanceConverter" />
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0" Height="70" Background="{StaticResource MainBrush}">
+            <TextBlock Text="Parking facilities" x:Uid="ParkingFacilitiesTitle" Foreground="{StaticResource WhiteTextBrush}" Style="{ThemeResource GroupHeaderTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="24,0,0,0"/>
+        </Grid>
+
+        <ListView Grid.Row="1" ItemsSource="{Binding ParkingFacilities}" IsItemClickEnabled="False" SelectionMode="None" Margin="0,0,0,0" Padding="0,12,0,72">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="24,14">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Left icon -->
+                        <Grid Grid.Column="0" Margin="0,0,20,0" VerticalAlignment="Center">
+                            <Ellipse Height="33" Width="33" Fill="{Binding Status, Converter={StaticResource ParkingFacilityStatusToBrushConverter}}" VerticalAlignment="Center"/>
+                            <Ellipse Height="40" Width="40" Fill="{Binding Status, Converter={StaticResource ParkingFacilityStatusToBrushConverter}}" VerticalAlignment="Center" Opacity="0.5"/>
+
+                            <TextBlock Text="P" FontSize="22" Foreground="White" Style="{StaticResource BodyTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,3"/>
+                        </Grid>
+                        
+                        <!-- Right box -->
+                        <StackPanel Grid.Column="1">
+                            
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="{Binding Name}" TextWrapping="NoWrap" Margin="0" Style="{StaticResource BaseTextBlockStyle}" FontSize="23" Foreground="{StaticResource MainTextBrush}"/>
+
+                                <!-- Distance -->
+                                <StackPanel  Grid.Column="1" Orientation="Horizontal" Visibility="{Binding Distance, Converter={StaticResource VisibilityConverter}}">
+                                    <Ellipse HorizontalAlignment="Center" VerticalAlignment="Center" Width="7" Height="7" Margin="0,0,-15,0" Fill="#FFC7C7C7"/>
+                                    <Ellipse Fill="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" Width="15" Height="15" Margin="0,0,6,0" StrokeThickness="1" Stroke="#FFC7C7C7"/>
+                                    <TextBlock Text="{Binding Distance, Converter={StaticResource MetersToDistanceConverter}}" TextWrapping="NoWrap" Margin="0" FontSize="15" Style="{StaticResource ListViewItemContentTextBlockStyle}" Foreground="{StaticResource GreyTextBrush}" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Grid>
+                            
+                            <TextBlock Text="{Binding Address}" TextWrapping="WrapWholeWords" Margin="0" Style="{StaticResource ListViewItemContentTextBlockStyle}" Foreground="{StaticResource MainTextBrush}"/>
+                            
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Status text -->
+                                <TextBlock Grid.Column="0" Text="{Binding Status, Converter={StaticResource ParkingFacilityStatusToStringConverter}}" TextWrapping="NoWrap" Margin="0" Style="{StaticResource ListViewItemContentTextBlockStyle}" Foreground="{Binding Status, Converter={StaticResource ParkingFacilityStatusToBrushConverter}}"/>
+
+                                <!-- Exact space numbers -->
+                                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Visibility="{Binding TotalSpace, Converter={StaticResource VisibilityConverter}}">
+                                    <TextBlock Text="{Binding FreeSpace}" TextWrapping="NoWrap" Margin="0" Style="{StaticResource ListViewItemContentTextBlockStyle}" Foreground="{StaticResource MainTextBrush}"/>
+                                    <TextBlock Text="/" TextWrapping="NoWrap" Margin="2,0" Style="{StaticResource ListViewItemContentTextBlockStyle}" Foreground="{StaticResource MainTextBrush}"/>
+                                    <TextBlock Text="{Binding TotalSpace}" TextWrapping="NoWrap" Margin="0" Style="{StaticResource ListViewItemContentTextBlockStyle}" Foreground="{StaticResource MainTextBrush}"/>
+                                </StackPanel>
+                                
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Page>

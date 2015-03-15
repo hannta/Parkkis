@@ -1,0 +1,93 @@
+﻿<Page
+    x:Class="Parkkis.Views.AboutPageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Parkkis.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:Parkkis.Behaviors"
+    xmlns:micro="using:Caliburn.Micro"
+    xmlns:converters="using:Parkkis.Converters"
+    mc:Ignorable="d"
+    xmlns:viewModels="using:Parkkis.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewModels:AboutPageViewModel, IsDesignTimeCreatable=True}"
+    micro:Bind.AtDesignTime="True"
+    Background="{StaticResource PageBgBrush}"
+    RequestedTheme="Light">
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                    <SlideNavigationTransitionInfo/>
+                </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+
+    <Page.Resources>
+        <converters:ParkingFacilityStatusToBrushConverter x:Key="ParkingFacilityStatusToBrushConverter" />
+        <converters:ParkingFacilityStatusToStringConverter x:Key="ParkingFacilityStatusToStringConverter" />
+        <converters:VisibilityConverter x:Key="VisibilityConverter" />
+    </Page.Resources>
+
+    <i:Interaction.Behaviors>
+        <behaviors:StatusBarBehavior IsVisible="True" BackgroundColor="{StaticResource MainDarkColor}" ForegroundColor="{StaticResource StatusBarColor}"/>
+    </i:Interaction.Behaviors>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Height="70" Background="{StaticResource MainBrush}">
+            <TextBlock Text="About" x:Uid="AboutTitle" Foreground="{StaticResource WhiteTextBrush}" Style="{ThemeResource GroupHeaderTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="24,0,0,0"/>
+        </Grid>
+
+        <ScrollViewer Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Margin="24,12,24,0">
+
+                    <TextBlock x:Uid="ApplicationTitle" Text="Parkkis" Foreground="{StaticResource MainTextBrush}" Style="{ThemeResource ListViewItemTextBlockStyle}"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Uid="AboutVersion" Text="Version" Foreground="{StaticResource MainTextBrush}" Style="{ThemeResource MessageDialogContentStyle}"/>
+                        <TextBlock x:Name="AppVersion" Foreground="{StaticResource MainTextBrush}" Style="{ThemeResource MessageDialogContentStyle}" Margin="12,0,0,0"/>
+                    </StackPanel>
+
+                    <TextBlock x:Uid="AboutDevelopedBy" Text="Developed by Hannu Tapanila" Foreground="{StaticResource MainTextBrush}" Style="{ThemeResource MessageDialogContentStyle}"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Uid="AboutContact" Text="Contact" Foreground="{StaticResource MainTextBrush}" Style="{ThemeResource MessageDialogContentStyle}"/>
+                        <TextBlock Foreground="{StaticResource MainTextBrush}" micro:Message.Attach="[Event Tapped] = [Action LeaveFeedback()]" Style="{ThemeResource MessageDialogContentStyle}" Margin="12,0,0,0">
+                            <Underline>
+                                <Run x:Uid="AboutContactEmail" Text="parkkis@hannu.io"/>
+                            </Underline>
+                        </TextBlock>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TextBlock x:Uid="AboutHowItWorksTitle" Text="How it works" Foreground="{StaticResource MainTextBrush}" Style="{ThemeResource GroupHeaderTextBlockStyle}" Margin="0,24,0,0"/>
+                        <TextBlock x:Uid="AboutHowItWorksDescription" Text="With parkkis you can check selected region parking facilities status..." Foreground="{StaticResource MainTextBrush}" Style="{ThemeResource MessageDialogContentStyle}" Margin="0,6,0,0"/>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Margin="24,6,24,12" VerticalAlignment="Bottom">
+                    <Button x:Name="LeaveFeedback" x:Uid="AboutLeaveFeedbackButton" Content="Leave feedback" Background="{StaticResource MainDarkBrush}" BorderBrush="{StaticResource MainBrush}" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" />
+                    <Button x:Name="RateAndReview" x:Uid="AboutRateAndReviewButton" Content="Rate and review this app" Background="{StaticResource MainDarkBrush}" BorderBrush="{StaticResource MainBrush}" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" />
+                </StackPanel>
+
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
+
+</Page>

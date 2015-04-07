@@ -78,6 +78,11 @@
                         <TextBlock x:Uid="AboutHowItWorksDescription" Text="With parkkis you can check selected region parking facilities status..." Foreground="{StaticResource MainTextBrush}" Style="{ThemeResource MessageDialogContentStyle}" Margin="0,6,0,0"/>
                     </StackPanel>
 
+                    <StackPanel>
+                        <TextBlock x:Uid="PrivacyPolicyTitle" Text="Privacy Policy" Foreground="{StaticResource MainTextBrush}" Style="{ThemeResource GroupHeaderTextBlockStyle}" Margin="0,24,0,0"/>
+                        <TextBlock x:Uid="PrivacyPolicyTitleDescription" Text="This application uses your location for displaying your position on map." Foreground="{StaticResource MainTextBrush}" Style="{ThemeResource MessageDialogContentStyle}" Margin="0,6,0,0"/>
+                    </StackPanel>
+
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Margin="24,6,24,12" VerticalAlignment="Bottom">

@@ -213,6 +213,12 @@
   <data name="ParkingFacilitiesTitle.Text" xml:space="preserve">
     <value>Parkkitalot</value>
   </data>
+  <data name="PrivacyPolicyTitle" xml:space="preserve">
+    <value>Yksityisyydensuoja</value>
+  </data>
+  <data name="PrivacyPolicyTitleDescription" xml:space="preserve">
+    <value>Tämä sovellus käyttää sijantitietoasi oman sijaintisi näyttämiseen kartalla.</value>
+  </data>
   <data name="SettingsAllowLocationUsage.Content" xml:space="preserve">
     <value>Salli sijainnin käyttö</value>
   </data>

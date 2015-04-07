@@ -213,6 +213,12 @@
   <data name="ParkingFacilitiesTitle.Text" xml:space="preserve">
     <value>Parking Facilities</value>
   </data>
+  <data name="PrivacyPolicyTitle" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="PrivacyPolicyTitleDescription" xml:space="preserve">
+    <value>This application uses your location for displaying your position on map.</value>
+  </data>
   <data name="SettingsAllowLocationUsage.Content" xml:space="preserve">
     <value>Allow location use</value>
   </data>
